@@ -1,21 +1,6 @@
 ﻿Public Class PageLaunchRight
     Implements IRefreshable
 
-    Private Sub Init() Handles Me.Loaded
-        PanBack.ScrollToHome()
-        PanScroll = PanBack '不知道为啥不能在 XAML 设置
-        PanLog.Visibility = If(ModeDebug, Visibility.Visible, Visibility.Collapsed)
-        '社区版提示
-        PanHint.Visibility = If(Setup.Get("UiLauncherCEHint"), Visibility.Visible, Visibility.Collapsed)
-        LabHint1.Text = "社区版包含未在官方主线版本发布的功能，仅用于尝鲜。请不要向官方仓库反馈社区版的问题哦！"
-        LabHint2.Text = $"若要永久隐藏此提示，请参阅 README。"
-    End Sub
-
-    '暂时关闭快照版提示
-    Private Sub BtnHintClose_Click(sender As Object, e As EventArgs) Handles BtnHintClose.Click
-        AniDispose(PanHint, True)
-    End Sub
-
 #Region "自定义主页"
 
     ''' <summary>
